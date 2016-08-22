@@ -10,7 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'frankier/neovim-colors-solarized-truecolor-only'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-latex/vim-latex'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'mbbill/undotree'
@@ -30,6 +31,7 @@ set undofile
 set undolevels=1000
 set undoreload=10000        " Maximum number of lines to save for undo on a buffer reload
 
+set termguicolors
 set cursorline              " Highlight current line
 
 set laststatus=2                       " Always show status bar
@@ -65,7 +67,7 @@ set splitbelow
 
 let mapleader = ','
 
-" Solarize
+" Solarized
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
     let g:solarized_termcolors=256
     let g:solarized_termtrans=1
@@ -73,6 +75,14 @@ if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
     let g:solarized_visibility="normal"
     color solarized             " Load a colorscheme
 endif
+
+" Solarized neovim
+if isdirectory(expand("~/.vim/bundle/neovim-colors-solarized-truecolor-only"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    set background=dark
+    colorscheme solarized
+endif
+
 
 " NERDTree
 if isdirectory(expand("~/.vim/bundle/nerdtree"))
