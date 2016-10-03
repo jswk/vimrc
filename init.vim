@@ -8,13 +8,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'cloudhead/neovim-fuzzy'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'frankier/neovim-colors-solarized-truecolor-only'
 " Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-latex/vim-latex'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'mbbill/undotree'
+runtime! ftplugin/man.vim
 
 call vundle#end()
 
@@ -67,6 +69,19 @@ set splitbelow
 
 let mapleader = ','
 
+" terminal
+
+:tnoremap <A-h> <C-\><C-n><C-w>h
+:tnoremap <A-j> <C-\><C-n><C-w>j
+:tnoremap <A-k> <C-\><C-n><C-w>k
+:tnoremap <A-l> <C-\><C-n><C-w>l
+:nnoremap <A-h> <C-w>h
+:nnoremap <A-j> <C-w>j
+:nnoremap <A-k> <C-w>k
+:nnoremap <A-l> <C-w>l
+
+" BUNDLES CONFIGURATION
+
 " Solarized
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
     let g:solarized_termcolors=256
@@ -83,12 +98,12 @@ if isdirectory(expand("~/.vim/bundle/neovim-colors-solarized-truecolor-only"))
     colorscheme solarized
 endif
 
-
 " NERDTree
 if isdirectory(expand("~/.vim/bundle/nerdtree"))
+    let NERDTreeQuitOnOpen=1
+    map <leader>e :NERDTreeFind<CR>
 endif
 
-    map <leader>e :NERDTreeFind<CR>
 " UndoTree
 if isdirectory(expand("~/.vim/bundle/undotree"))
     nnoremap <Leader>u :UndotreeToggle<CR>
@@ -105,4 +120,9 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
     if exists("g:ctrlp_user_command")
         unlet g:ctrlp_user_command
     endif
+endif
+
+" fuzzy
+if isdirectory(expand("~/.vim/bundle/neovim-fuzzy"))
+    nnoremap <C-p> :FuzzyOpen<CR>
 endif
