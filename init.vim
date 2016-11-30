@@ -16,7 +16,7 @@ Plugin 'frankier/neovim-colors-solarized-truecolor-only'
 Plugin 'vim-latex/vim-latex'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'mbbill/undotree'
-runtime! ftplugin/man.vim
+" runtime! ftplugin/man.vim
 
 call vundle#end()
 
@@ -68,6 +68,11 @@ set splitright
 set splitbelow
 
 let mapleader = ','
+
+" restore cursor position after file reopen
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " terminal
 
