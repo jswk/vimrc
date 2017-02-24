@@ -8,11 +8,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'cloudhead/neovim-fuzzy'
+Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'cloudhead/neovim-fuzzy'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'frankier/neovim-colors-solarized-truecolor-only'
-" Plugin 'altercation/vim-colors-solarized'
+"Plugin 'frankier/neovim-colors-solarized-truecolor-only'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-latex/vim-latex'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'mbbill/undotree'
@@ -33,7 +33,7 @@ set undofile
 set undolevels=1000
 set undoreload=10000        " Maximum number of lines to save for undo on a buffer reload
 
-set termguicolors
+""neovim set termguicolors
 set cursorline              " Highlight current line
 
 set laststatus=2                       " Always show status bar
@@ -44,6 +44,7 @@ set statusline+=[%{&ff}/%Y]            " Filetype
 set statusline+=[%{getcwd()}]          " Current dir
 set statusline+=%=%l,%c%V\ %P          " Right aligned file nav info
 
+set encoding=utf-8
 set backspace=indent,eol,start         " Make backspace always work
 set number                             " Show line numbers
 set showmatch                          " Show matching brackets/parens
@@ -76,24 +77,25 @@ endif
 
 " terminal
 
-:tnoremap <A-h> <C-\><C-n><C-w>h
-:tnoremap <A-j> <C-\><C-n><C-w>j
-:tnoremap <A-k> <C-\><C-n><C-w>k
-:tnoremap <A-l> <C-\><C-n><C-w>l
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
+":tnoremap <A-h> <C-\><C-n><C-w>h
+":tnoremap <A-j> <C-\><C-n><C-w>j
+":tnoremap <A-k> <C-\><C-n><C-w>k
+":tnoremap <A-l> <C-\><C-n><C-w>l
+":nnoremap <A-h> <C-w>h
+":nnoremap <A-j> <C-w>j
+":nnoremap <A-k> <C-w>k
+":nnoremap <A-l> <C-w>l
 
 " BUNDLES CONFIGURATION
 
 " Solarized
 if isdirectory(expand("~/.vim/bundle/vim-colors-solarized"))
-    let g:solarized_termcolors=256
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="normal"
-    let g:solarized_visibility="normal"
-    color solarized             " Load a colorscheme
+    "let g:solarized_termcolors=256
+    "let g:solarized_termtrans=1
+    "let g:solarized_contrast="normal"
+    "let g:solarized_visibility="normal"
+    set background=dark
+    colorscheme solarized             " Load a colorscheme
 endif
 
 " Solarized neovim
@@ -125,6 +127,13 @@ if isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
     if exists("g:ctrlp_user_command")
         unlet g:ctrlp_user_command
     endif
+    " http://stackoverflow.com/questions/2372307/opening-files-in-vim-using-fuzzy-search
+    if executable('ag')
+        " Use Ag over Grep
+        set grepprg=ag\ --nogroup\ --nocolor
+        " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+      endif
 endif
 
 " fuzzy
