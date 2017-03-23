@@ -28,8 +28,11 @@ set history=1000            " Store more history (50 by default)
 set spell                   " Enable spell checking
 set hidden                  " Allow buffer switching without saving
 
-set backup
+set nobackup
+set noswapfile
+set writebackup
 set undofile
+set undodir=~/tmp/.vimundo
 set undolevels=1000
 set undoreload=10000        " Maximum number of lines to save for undo on a buffer reload
 
