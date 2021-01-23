@@ -13,10 +13,13 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'frankier/neovim-colors-solarized-truecolor-only'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-latex/vim-latex'
+"Plugin 'vim-latex/vim-latex'
+Plugin 'lervag/vimtex'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'mbbill/undotree'
 " runtime! ftplugin/man.vim
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 
@@ -143,3 +146,7 @@ endif
 if isdirectory(expand("~/.vim/bundle/neovim-fuzzy"))
     nnoremap <C-p> :FuzzyOpen<CR>
 endif
+
+" vimtex
+
+let maplocalleader=','
