@@ -20,6 +20,7 @@ Plugin 'mbbill/undotree'
 " runtime! ftplugin/man.vim
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-fugitive'
+Plugin 'JuliaEditorSupport/julia-vim'
 
 call vundle#end()
 
